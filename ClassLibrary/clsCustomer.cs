@@ -1,5 +1,7 @@
 ﻿
 
+using System;
+
 namespace ClassLibrary
 {
     public class clsCustomer
@@ -173,20 +175,35 @@ namespace ClassLibrary
 
         public bool Find(int customerID)
         {
-            mCustomerID = 21;
-            mFirstName = "TestFName";
-            mLastName = "TestLName";
-            mHouseName = "TestHName";
-            mStreet = "TestStreet";
-            mTown = "TestTown";
-            mCounty = "TestCounty";
-            mPostcode = "TestPostcode";
-            mContactNumber = "0000";
-            mEmail = "test@test.com";
-            mTotalChimneys = 22;
-            mComments = "Testing";
-            mTotalVisits = 23;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@customerID", customerID);
+            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
+
+            if (DB.Count == 1)
+            {
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
+                mFirstName = Convert.ToString(DB.DataTable.Rows[0]["firstName"]);
+                mLastName = Convert.ToString(DB.DataTable.Rows[0]["lastName"]);
+                mHouseName = Convert.ToString(DB.DataTable.Rows[0]["houseName"]);
+                mStreet = Convert.ToString(DB.DataTable.Rows[0]["street"]);
+                mTown = Convert.ToString(DB.DataTable.Rows[0]["town"]);
+                mCounty = Convert.ToString(DB.DataTable.Rows[0]["county"]);
+                mPostcode = Convert.ToString(DB.DataTable.Rows[0]["postcode"]);
+                mContactNumber = Convert.ToString(DB.DataTable.Rows[0]["contactNumber"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["email"]);
+                mTotalChimneys = Convert.ToInt32(DB.DataTable.Rows[0]["totalChimneys"]);
+                mComments = Convert.ToString(DB.DataTable.Rows[0]["comments"]);
+                mTotalVisits = Convert.ToInt32(DB.DataTable.Rows[0]["totalVisits"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+           
         }
     }
+
+
 }
