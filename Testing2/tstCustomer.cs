@@ -140,6 +140,237 @@ namespace Testing2Customer
             Assert.AreEqual(AnCustomer.totalVisits, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Int32 customerID = 21;
+            Found = AnCustomer.Find(customerID);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestCustomerIDFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+            if (AnCustomer.customerID != 21)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestFirstNameFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.firstName != "TestFName")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestLastNameFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.lastName != "TestLName")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestHouseNameFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.houseName != "TestHName")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestStreetFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.street != "TestStreet")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestTownFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.town != "TestTown")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestCountyFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.county != "TestCounty")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestPostcodeFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.postcode != "TestPostcode")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestContactNumberFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.contactNumber != "0000")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestEmailFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.email != "test@test.com")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestTotalChimneysFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.totalChimneys != 22)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestCommentsFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.comments != "Testing")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestTotalVisitsFound()
+        {
+            clsCustomer AnCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            int customerID = 21;
+            Found = AnCustomer.Find(customerID);
+
+            if (AnCustomer.totalVisits != 23)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
 
     }
 }
