@@ -17,21 +17,47 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsCustomer AnCustomer = new clsCustomer();
 
-        AnCustomer.firstName = txtFirstName.Text;
-        AnCustomer.lastName = txtLastName.Text;
-        AnCustomer.houseName = txtHouseName.Text;
-        AnCustomer.street = txtStreet.Text;
-        AnCustomer.town = txtTown.Text;
-        AnCustomer.county = txtCounty.Text;
-        AnCustomer.postcode = txtPostcode.Text;
-        AnCustomer.contactNumber = txtContactNumber.Text;
-        AnCustomer.email = txtEmail.Text;
-        AnCustomer.totalChimneys = Convert.ToInt32(txtTotalChimneys.Text);
-        AnCustomer.comments = txtComments.Text;
-        AnCustomer.totalVisits = Convert.ToInt32(txtTotalVisits.Text);
-       
-        Session["AnCustomer"] = AnCustomer;
+        string FirstName = txtFirstName.Text;
+        string LastName = txtLastName.Text;
+        string HouseName = txtHouseName.Text;
+        string Street = txtStreet.Text;
+        string Town = txtTown.Text;
+        string County = txtCounty.Text;
+        string Postcode = txtPostcode.Text;
+        string ContactNumber = txtContactNumber.Text;
+        string Email = txtEmail.Text;
+        string TotalChimneys = txtTotalChimneys.Text;
+        string Comments = txtComments.Text;
+        string TotalVisits = txtTotalVisits.Text;
+        
+        string Error = "";
+        Error = AnCustomer.Valid(FirstName, LastName, HouseName, Street, Town, County, Postcode, ContactNumber, Email, TotalChimneys, Comments, TotalVisits);
 
-        Response.Redirect("2CustomerViewer.aspx");
+        if (Error == "")
+        {
+            AnCustomer.firstName = FirstName;
+            AnCustomer.lastName = LastName;
+            AnCustomer.houseName = HouseName;
+            AnCustomer.street = Street;
+            AnCustomer.town = Town;
+            AnCustomer.county = County;
+            AnCustomer.postcode = Postcode;
+            AnCustomer.contactNumber = ContactNumber;
+            AnCustomer.email = Email;
+            AnCustomer.totalChimneys = Convert.ToInt32(TotalChimneys);
+            AnCustomer.comments = Comments;
+            AnCustomer.totalVisits = Convert.ToInt32(TotalVisits);
+
+            Session["AnCustomer"] = AnCustomer;
+
+            Response.Redirect("2CustomerViewer.aspx");
+
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+
+        
     }
 }

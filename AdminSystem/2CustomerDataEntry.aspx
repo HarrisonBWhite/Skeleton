@@ -44,7 +44,7 @@
         <asp:TextBox ID="txtTotalChimneys" runat="server"></asp:TextBox>
         <p>
             <asp:Label ID="lblComments" runat="server" Text="Comments:" width="97px"></asp:Label>
-            <asp:TextBox ID="txtComments" runat="server" style="margin-top: 0px"></asp:TextBox>
+        <asp:TextBox ID="txtComments" runat="server"></asp:TextBox>
         </p>
         <asp:Label ID="lblTotalVisits" runat="server" Text="Total Visits:" width="97px"></asp:Label>
         <asp:TextBox ID="txtTotalVisits" runat="server"></asp:TextBox>
