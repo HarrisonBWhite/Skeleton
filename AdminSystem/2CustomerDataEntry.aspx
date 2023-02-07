@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID:" width="97px"></asp:Label>
-            <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtCustomerID" runat="server" OnTextChanged="txtCustomerID_TextChanged"></asp:TextBox>
         </div>
         <p>
             <asp:Label ID="lblFirstName" runat="server" Text="First Name:" width="97px"></asp:Label>
