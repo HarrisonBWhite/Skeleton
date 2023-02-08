@@ -132,7 +132,8 @@ namespace Testing2Customer
         [TestMethod]
         public void UpdateMethodOK()
         {
-            clsCustomerCollection() AllCustomers = clsCustomerCollection();
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+
             clsCustomer TestItem = new clsCustomer();
             Int32 PrimaryKey = 0;
 
@@ -173,6 +174,81 @@ namespace Testing2Customer
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
 
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.customerID = 1;
+            TestItem.firstName = "Muffin";
+            TestItem.lastName = "Man";
+            TestItem.houseName = "Ye Old Bakery";
+            TestItem.street = "Drewery Lane";
+            TestItem.town = "Cakenation";
+            TestItem.county = "Ovenswell";
+            TestItem.postcode = "DYK TMM";
+            TestItem.contactNumber = "07834 956341";
+            TestItem.email = "muffin.man@bakermail.com";
+            TestItem.totalChimneys = 6;
+            TestItem.comments = "Open fires";
+            TestItem.totalVisits = 2;
+
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.customerID = PrimaryKey;
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            AllCustomers.Delete();
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
+
+        [TestMethod]
+        public void ReportByPostCodeMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByPostCode("");
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPostCodeNoneFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByPostCode("xxx xxx");
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPostCodeTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            Boolean OK = true;
+            FilteredCustomers.ReportByPostCode("PUM K1N");
+
+            if(FilteredCustomers.Count == 2)
+            {
+                if(FilteredCustomers.CustomerList[0].customerID != 13)
+                {
+                    OK = false;
+                }
+                if(FilteredCustomers.CustomerList[1].customerID != 16)
+                {
+                    OK = false;
+
+                }
+            }
+            else
+            {
+                OK = true;
+            }
+            Assert.IsTrue(OK);
         }
 
     }
