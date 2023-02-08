@@ -22,8 +22,15 @@ public partial class _1_List : System.Web.UI.Page
         clsCustomerCollection Customers = new clsCustomerCollection();
         lstCustomerList.DataSource = Customers.CustomerList;
         lstCustomerList.DataValueField = "customerID";
-        lstCustomerList.DataTextField = "postcode";
+        lstCustomerList.DataTextField = "firstName";
+        lstCustomerList.DataTextField = "lastName";
         lstCustomerList.DataBind();
     }
 
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["customerID"] = -1;
+        Response.Redirect("2CustomerDataEntry.aspx");
+    }
 }
