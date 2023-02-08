@@ -95,5 +95,24 @@ namespace ClassLibrary
 
         }
 
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@customerID", mThisCustomer.customerID);
+            DB.AddParameter("@firstName", mThisCustomer.firstName);
+            DB.AddParameter("@lastName", mThisCustomer.lastName);
+            DB.AddParameter("@houseName", mThisCustomer.houseName);
+            DB.AddParameter("@street", mThisCustomer.street);
+            DB.AddParameter("@town", mThisCustomer.town);
+            DB.AddParameter("@county", mThisCustomer.county);
+            DB.AddParameter("@postcode", mThisCustomer.postcode);
+            DB.AddParameter("@contactNumber", mThisCustomer.contactNumber);
+            DB.AddParameter("@email", mThisCustomer.email);
+            DB.AddParameter("@totalChimneys", mThisCustomer.totalChimneys);
+            DB.AddParameter("@comments", mThisCustomer.comments);
+            DB.AddParameter("@totalVisits", mThisCustomer.totalVisits);
+        }
+
     }
 }

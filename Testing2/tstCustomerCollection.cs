@@ -129,6 +129,51 @@ namespace Testing2Customer
 
         }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsCustomerCollection() AllCustomers = clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+
+            TestItem.firstName = "Muffin";
+            TestItem.lastName = "Man";
+            TestItem.houseName = "Ye Old Bakery";
+            TestItem.street = "Drewery Lane";
+            TestItem.town = "Cakenation";
+            TestItem.county = "Ovenswell";
+            TestItem.postcode = "DYK TMM";
+            TestItem.contactNumber = "07834 956341";
+            TestItem.email = "muffin.man@bakermail.com";
+            TestItem.totalChimneys = 6;
+            TestItem.comments = "Open fires";
+            TestItem.totalVisits = 2;
+
+            AllCustomers.ThisCustomer = TestItem;
+
+            PrimaryKey = AllCustomers.Add();
+
+            TestItem.customerID = PrimaryKey;
+
+            TestItem.firstName = "Lord";
+            TestItem.lastName = "Farquaad";
+            TestItem.houseName = "Main Tower";
+            TestItem.street = "Castle Road";
+            TestItem.town = "Capital";
+            TestItem.county = "Duloc";
+            TestItem.postcode = "M4Y D13";
+            TestItem.contactNumber = "07622 65721";
+            TestItem.email = "farquaad.lord@mirrormail.com";
+            TestItem.totalChimneys = 12;
+            TestItem.comments = "Very Tall Flumes";
+            TestItem.totalVisits = 4;
+
+            AllCustomers.ThisCustomer = TestItem;
+            AllCustomers.Update();
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+
+        }
 
     }
 }
