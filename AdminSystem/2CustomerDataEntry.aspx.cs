@@ -17,40 +17,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsCustomer AnCustomer = new clsCustomer();
 
-        string FirstName = txtFirstName.Text;
-        string LastName = txtLastName.Text;
-        string HouseName = txtHouseName.Text;
-        string Street = txtStreet.Text;
-        string Town = txtTown.Text;
-        string County = txtCounty.Text;
-        string Postcode = txtPostcode.Text;
-        string ContactNumber = txtContactNumber.Text;
-        string Email = txtEmail.Text;
-        string TotalChimneys = txtTotalChimneys.Text;
-        string Comments = txtComments.Text;
-        string TotalVisits = txtTotalVisits.Text;
+        string firstName = txtFirstName.Text;
+        string lastName = txtLastName.Text;
+        string houseName = txtHouseName.Text;
+        string street = txtStreet.Text;
+        string town = txtTown.Text;
+        string county = txtCounty.Text;
+        string postcode = txtPostcode.Text;
+        string contactNumber = txtContactNumber.Text;
+        string email = txtEmail.Text;
+        string totalChimneys = txtTotalChimneys.Text;
+        string comments = txtComments.Text;
+        string totalVisits = txtTotalVisits.Text;
         
         string Error = "";
-        Error = AnCustomer.Valid(FirstName, LastName, HouseName, Street, Town, County, Postcode, ContactNumber, Email, TotalChimneys, Comments, TotalVisits);
+        Error = AnCustomer.Valid(firstName, lastName, houseName, street, town, county, postcode, contactNumber, email, totalChimneys, comments, totalVisits);
 
         if (Error == "")
         {
-            AnCustomer.firstName = FirstName;
-            AnCustomer.lastName = LastName;
-            AnCustomer.houseName = HouseName;
-            AnCustomer.street = Street;
-            AnCustomer.town = Town;
-            AnCustomer.county = County;
-            AnCustomer.postcode = Postcode;
-            AnCustomer.contactNumber = ContactNumber;
-            AnCustomer.email = Email;
-            AnCustomer.totalChimneys = Convert.ToInt32(TotalChimneys);
-            AnCustomer.comments = Comments;
-            AnCustomer.totalVisits = Convert.ToInt32(TotalVisits);
+            AnCustomer.firstName = firstName;
+            AnCustomer.lastName = lastName;
+            AnCustomer.houseName = houseName;
+            AnCustomer.street = street;
+            AnCustomer.town = town;
+            AnCustomer.county = county;
+            AnCustomer.postcode = postcode;
+            AnCustomer.contactNumber = contactNumber;
+            AnCustomer.email = email;
+            AnCustomer.totalChimneys = Convert.ToInt32(totalChimneys);
+            AnCustomer.comments = comments;
+            AnCustomer.totalVisits = Convert.ToInt32(totalVisits);
 
-            Session["AnCustomer"] = AnCustomer;
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            CustomerList.ThisCustomer = AnCustomer;
+            CustomerList.Add();
 
-            Response.Redirect("2CustomerViewer.aspx");
+
+            Response.Redirect("2CustomerList.aspx");
 
         }
         else

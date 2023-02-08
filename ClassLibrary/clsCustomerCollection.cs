@@ -39,6 +39,7 @@ namespace ClassLibrary
         }
 
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        clsCustomer mThisCustomer = new clsCustomer();
         public List<clsCustomer> CustomerList
         {
             get
@@ -61,6 +62,38 @@ namespace ClassLibrary
                 //finish later
             }
         }
-        public clsCustomer ThisCustomer { get; set; }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                return mThisCustomer;
+            }
+            set
+            {
+                mThisCustomer = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@firstName", mThisCustomer.firstName);
+            DB.AddParameter("@lastName", mThisCustomer.lastName);
+            DB.AddParameter("@houseName", mThisCustomer.houseName);
+            DB.AddParameter("@street", mThisCustomer.street);
+            DB.AddParameter("@town", mThisCustomer.town);
+            DB.AddParameter("@county", mThisCustomer.county);
+            DB.AddParameter("@postcode", mThisCustomer.postcode);
+            DB.AddParameter("@contactNumber", mThisCustomer.contactNumber);
+            DB.AddParameter("@email", mThisCustomer.email);
+            DB.AddParameter("@totalChimneys", mThisCustomer.totalChimneys);
+            DB.AddParameter("@comments", mThisCustomer.comments);
+            DB.AddParameter("@totalVisits", mThisCustomer.totalVisits);
+
+            return DB.Execute("sproc_tblCustomer_Insert");
+
+        }
+
     }
 }

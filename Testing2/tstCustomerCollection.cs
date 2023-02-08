@@ -98,7 +98,36 @@ namespace Testing2Customer
 
         }
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
 
+            clsCustomer TestItem = new clsCustomer();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.customerID = 1;
+            TestItem.firstName = "Jack";
+            TestItem.lastName = "Skellington";
+            TestItem.houseName = "Pumpkin Manor";
+            TestItem.street = "Grave End";
+            TestItem.town = "Halloween Town";
+            TestItem.county = "Festival Street";
+            TestItem.postcode = "PUM K1N";
+            TestItem.contactNumber = "666";
+            TestItem.email = "skellington.j@spookmail.com";
+            TestItem.totalChimneys = 3;
+            TestItem.comments = "Bats in flume";
+            TestItem.totalVisits = 4;
+
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.customerID = PrimaryKey;
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+
+        }
 
 
     }
