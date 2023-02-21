@@ -118,6 +118,8 @@ namespace ClassLibrary
             DB.AddParameter("@totalChimneys", mThisCustomer.totalChimneys);
             DB.AddParameter("@comments", mThisCustomer.comments);
             DB.AddParameter("@totalVisits", mThisCustomer.totalVisits);
+
+            DB.Execute("sproc_tblCustomer_Update");
         }
 
         public void Delete()
