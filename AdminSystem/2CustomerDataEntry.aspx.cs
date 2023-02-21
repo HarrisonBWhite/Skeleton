@@ -46,7 +46,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsCustomer AnCustomer = new clsCustomer();
 
-        string customerID = txtCustomerID.Text;
+        //string customerID = txtCustomerID.Text;
         string firstName = txtFirstName.Text;
         string lastName = txtLastName.Text;
         string houseName = txtHouseName.Text;
@@ -66,7 +66,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
 
-            AnCustomer.customerID = Convert.ToInt32(customerID);
+            AnCustomer.customerID = customerID;
             AnCustomer.firstName = firstName;
             AnCustomer.lastName = lastName;
             AnCustomer.houseName = houseName;
