@@ -172,9 +172,9 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
-            if (AnCustomer.customerID != 2)
+            if (AnCustomer.customerID != 43)
             {
                 OK = false;
             }
@@ -189,7 +189,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.firstName != "TestFName")
@@ -206,7 +206,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.lastName != "TestLName")
@@ -223,7 +223,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.houseName != "TestHName")
@@ -240,7 +240,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.street != "TestStreet")
@@ -257,7 +257,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.town != "TestTown")
@@ -274,7 +274,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.county != "TestCounty")
@@ -291,7 +291,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.postcode != "TestPostcode")
@@ -308,7 +308,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.contactNumber != "0000")
@@ -325,7 +325,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.email != "test@test.com")
@@ -342,7 +342,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.totalChimneys != 22)
@@ -359,7 +359,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.comments != "Testing")
@@ -376,7 +376,7 @@ namespace Testing2Customer
             clsCustomer AnCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            int customerID = 2;
+            int customerID = 43;
             Found = AnCustomer.Find(customerID);
 
             if (AnCustomer.totalVisits != 23)
