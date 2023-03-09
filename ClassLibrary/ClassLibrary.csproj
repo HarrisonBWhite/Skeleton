@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsAlert.cs" />
-    <Compile Include="clsCompletedJob.cs" />
+    <Compile Include="clsJob.cs" />
     <Compile Include="clsCustomer.cs" />
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsFinance.cs" />

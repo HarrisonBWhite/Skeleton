@@ -2,89 +2,89 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Testing3CompletedJob
+namespace Testing3Job
 {
     [TestClass]
-    public class tstCompletedJob
+    public class tstJob
     {
         [TestMethod]
         public void InstanceOK()
         {
-            clsCompletedJob AnCompletedJob = new clsCompletedJob();
-            Assert.IsNotNull(AnCompletedJob);
+            clsJob AnJob = new clsJob();
+            Assert.IsNotNull(AnJob);
         }
 
         [TestMethod]
         public void ActivePropertyOK()
         {
-            clsCompletedJob AnCompletedJob = new clsCompletedJob();
+            clsJob AnJob = new clsJob();
             Boolean TestData = true;
-            AnCompletedJob.Active = TestData;
-            Assert.AreEqual(AnCompletedJob.Active, TestData);
+            AnJob.Active = TestData;
+            Assert.AreEqual(AnJob.Active, TestData);
         }
 
         [TestMethod]
         public void JobIDOK()
         {
-            clsCompletedJob AnCompletedJob = new clsCompletedJob();
+            clsJob AnJob = new clsJob();
             int TestData = 1;
-            AnCompletedJob.jobID = TestData;
-            Assert.AreEqual(AnCompletedJob.jobID, TestData);
+            AnJob.jobID = TestData;
+            Assert.AreEqual(AnJob.jobID, TestData);
         }
 
 
         [TestMethod]
         public void LastNameOK()
         {
-            clsCompletedJob AnCompletedJob = new clsCompletedJob();
+            clsJob AnJob = new clsJob();
             string TestData = "White";
-            AnCompletedJob.lastName = TestData;
-            Assert.AreEqual(AnCompletedJob.lastName, TestData);
+            AnJob.lastName = TestData;
+            Assert.AreEqual(AnJob.lastName, TestData);
         }
 
         [TestMethod]
         public void HouseNameOK()
         {
-            clsCompletedJob AnCompletedJob = new clsCompletedJob();
+            clsJob AnJob = new clsJob();
             string TestData = "April Cottage";
-            AnCompletedJob.houseName = TestData;
-            Assert.AreEqual(AnCompletedJob.houseName, TestData);
+            AnJob.houseName = TestData;
+            Assert.AreEqual(AnJob.houseName, TestData);
         }
 
         [TestMethod]
         public void commnetsOK()
         {
-            clsCompletedJob AnCompletedJob = new clsCompletedJob();
+            clsJob AnJob = new clsJob();
             string TestData = "N/A";
-            AnCompletedJob.comments = TestData;
-            Assert.AreEqual(AnCompletedJob.comments, TestData);
+            AnJob.comments = TestData;
+            Assert.AreEqual(AnJob.comments, TestData);
         }
 
         [TestMethod]
         public void DateOK()
         {
-            clsCompletedJob AnCompletedJob = new clsCompletedJob();
+            clsJob AnJob = new clsJob();
             DateTime TestData = DateTime.Now.Date;
-            AnCompletedJob.date = TestData;
-            Assert.AreEqual(AnCompletedJob.date, TestData);
+            AnJob.date = TestData;
+            Assert.AreEqual(AnJob.date, TestData);
         }
 
         [TestMethod]
         public void JobTakeOK()
         {
-            clsCompletedJob AnCompletedJob = new clsCompletedJob();
+            clsJob AnJob = new clsJob();
             double TestData = 45.0;
-            AnCompletedJob.jobTake = TestData;
-            Assert.AreEqual(AnCompletedJob.jobTake, TestData);
+            AnJob.jobTake = TestData;
+            Assert.AreEqual(AnJob.jobTake, TestData);
         }
 
         [TestMethod]
         public void TotalVisitsOK()
         {
-            clsCompletedJob AnCompletedJob = new clsCompletedJob();
+            clsCompletedJob AnJob = new clsJob();
             int TestData = 1;
-            AnCompletedJob.totalVisits = TestData;
-            Assert.AreEqual(AnCompletedJob.totalVisits, TestData);
+            AnJob.totalVisits = TestData;
+            Assert.AreEqual(AnJob.totalVisits, TestData);
         }
 
     }
