@@ -2,9 +2,9 @@
 
 namespace ClassLibrary
 {
-    public class clsCompletedJob
+    public class clsJob
     {
-        public bool Active { get; set; }
+       
         public int jobID { get; set; }
         public string lastName { get; set; }
         public string houseName { get; set; }
