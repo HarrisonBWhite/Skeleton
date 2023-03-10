@@ -25,4 +25,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["AnJob"] = AnJob;
         Response.Redirect("3JobViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsJob AnJob = new clsJob();
+
+        Int32 jobID;
+        Boolean Found = false;
+        jobID = Convert.ToInt32(txtJobID.Text);
+        Found = AnJob.Find(jobID);
+
+        if (Found == true)
+        {
+            txtLastName.Text = AnJob.lastName;
+            txtHouseName.Text = AnJob.houseName;
+            txtComments.Text = AnJob.comments;
+            txtDate.Text = AnJob.date.ToString();
+            txtJobTake.Text = AnJob.jobTake.ToString();
+            txtTotalVisits.Text = AnJob.totalVisits.ToString();
+        }
+    }
 }
