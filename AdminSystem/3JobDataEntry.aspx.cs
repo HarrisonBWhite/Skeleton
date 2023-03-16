@@ -16,14 +16,39 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsJob AnJob = new clsJob();
-        AnJob.lastName = txtLastName.Text;
-        AnJob.houseName = txtHouseName.Text;
-        AnJob.comments = txtComments.Text;
-        AnJob.date = Convert.ToDateTime(txtDate.Text);
-        AnJob.jobTake = Convert.ToDouble(txtJobTake.Text);
-        AnJob.totalVisits = Convert.ToInt32(txtTotalVisits.Text);
-        Session["AnJob"] = AnJob;
-        Response.Redirect("3JobViewer.aspx");
+
+        string LastName = txtLastName.Text;
+        string HouseName = txtHouseName.Text;
+        string Comments = txtComments.Text;
+        string Date = txtDate.Text;
+        string JobTake = txtJobTake.Text;
+        string TotalVisits = txtTotalVisits.Text;
+
+        string Error = "";
+
+
+        Error = AnJob.Valid(LastName, HouseName, Comments, Date, JobTake, TotalVisits);
+
+
+
+
+        if (Error == "")
+        {
+            AnJob.lastName = LastName;
+            AnJob.houseName = HouseName;
+            AnJob.comments = Comments;
+            AnJob.date = Convert.ToDateTime(txtDate.Text);
+            AnJob.jobTake = Convert.ToDouble(txtJobTake.Text);
+            AnJob.totalVisits = Convert.ToInt32(txtTotalVisits.Text);
+            Session["AnJob"] = AnJob;
+            Response.Write("3JobViewer.aspx");
+
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
