@@ -8,8 +8,33 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 jobID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        jobID = Convert.ToInt32(Session["jobID"]);
+        if (IsPostBack == false)
+        {
+            if (jobID != -1)
+            {
+                DisplayJob();
+            }
+        }
+
+    }
+
+    void DisplayJob()
+    {
+        clsJobCollection Job = new clsJobCollection();
+        Job.ThisJob.Find(jobID);
+
+        txtJobID.Text = Job.ThisJob.jobID.ToString();
+        txtLastName.Text = Job.ThisJob.lastName;
+        txtHouseName.Text = Job.ThisJob.houseName;
+        txtComments.Text = Job.ThisJob.comments;
+        txtDate.Text = Job.ThisJob.date.ToString();
+        txtJobTake.Text = Job.ThisJob.jobTake.ToString();
+        txtTotalVisits.Text = Job.ThisJob.totalVisits.ToString();
+
 
     }
 
@@ -34,14 +59,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Error == "")
         {
+            AnJob.jobID = jobID;
             AnJob.lastName = LastName;
             AnJob.houseName = HouseName;
             AnJob.comments = Comments;
             AnJob.date = Convert.ToDateTime(txtDate.Text);
             AnJob.jobTake = Convert.ToDouble(txtJobTake.Text);
             AnJob.totalVisits = Convert.ToInt32(txtTotalVisits.Text);
-            Session["AnJob"] = AnJob;
-            Response.Write("3JobViewer.aspx");
+
+            clsJobCollection JobList = new clsJobCollection();
+            
+            
+            if (jobID == -1)
+            {
+                JobList.ThisJob = AnJob;
+                JobList.Add();
+            }
+            else
+            {
+                JobList.ThisJob.Find(jobID);
+                JobList.ThisJob = AnJob;
+                JobList.Update();
+            }
+
+            Response.Redirect("3JobList.aspx");
 
         }
         else
