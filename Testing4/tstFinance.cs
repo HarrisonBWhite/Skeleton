@@ -14,14 +14,7 @@ namespace Testing4Finance
             Assert.IsNotNull(AnFinance);
         }
 
-        [TestMethod]
-        public void ActivePropertyOK()
-        {
-            clsFinance AnFinance = new clsFinance();
-            Boolean TestData = true;
-            AnFinance.Active = TestData;
-            Assert.AreEqual(AnFinance.Active, TestData);
-        }
+        
 
         [TestMethod]
         public void FinanaceIDOK()
@@ -50,6 +43,70 @@ namespace Testing4Finance
             Assert.AreEqual(AnFinance.jobTake, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsFinance AnFinance = new clsFinance();
+            Boolean Found = false;
+            Int32 financeID = 1;
+            Found = AnFinance.Find(financeID);
+            Assert.IsTrue(Found);
+
+        }
+
+        [TestMethod]
+        public void TestFinanceIDFOund()
+        {
+            clsFinance AnFinance = new clsFinance();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 financeID = 1;
+            Found = AnFinance.Find(financeID);
+
+            if (AnFinance.financeID != 1)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestDateFound()
+        {
+            clsFinance AnFinance = new clsFinance();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 financeID = 1;
+            Found = AnFinance.Find(financeID);
+
+            if (AnFinance.date != Convert.ToDateTime("11/06/2022"))
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestJobTakeFound()
+        {
+            clsFinance AnFinance = new clsFinance();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 financeID = 1;
+            Found = AnFinance.Find(financeID);
+
+            if (AnFinance.jobTake != 45)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+
+        }
 
 
     }
