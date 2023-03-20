@@ -182,12 +182,12 @@ namespace ClassLibrary
                 Take = Convert.ToInt32(JobTake);
                 if (Take < 0)
                 {
-                    Error = Error + "Total chimneys cannot be lower than 0";
+                    Error = Error + "Total take cannot be lower than 0";
                 }
 
                 if (Take > 500)
                 {
-                    Error = Error + "Total chimneys cannot exceed 500";
+                    Error = Error + "Total take cannot exceed 500";
                 }
             }
             catch

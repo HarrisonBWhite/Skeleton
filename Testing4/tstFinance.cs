@@ -4,9 +4,17 @@ using System;
 
 namespace Testing4Finance
 {
+
+   
+
     [TestClass]
     public class tstFinance
     {
+
+
+        string date = DateTime.Now.Date.ToString();
+        string jobTake = "45";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -106,6 +114,161 @@ namespace Testing4Finance
 
             Assert.IsTrue(OK);
 
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreEqual(Error, "");
+        }
+
+        //date validation
+
+        [TestMethod]
+        public void DateMinLessOne()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string date = TestDate.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void DateMin()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void DateMinPlusOne()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string date = TestDate.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void DateExtremeMax()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string date = TestDate.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        // job take validation
+        [TestMethod]
+        public void JobTakeNameMinLessOne()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            Int32 Take = -1;
+            string jobTake = Take.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JobTakeNameMin()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            Int32 Take = 0;
+            string jobTake = Take.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JobTakeNameMinPlusOne()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            Int32 Take = 1;
+            string jobTake = Take.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JobTakeNameMid()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            Int32 Take = 250;
+            string JobTake = Take.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JobTakeNameMaxLessOne()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            Int32 Take = 499;
+            string jobTake = Take.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JobTakeNameMax()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            Int32 Take = 500;
+            string jobTake = Take.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JobTakeNameMaxPlusOne()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            Int32 Take = 501;
+            string jobTake = Take.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JobTakeExtremeMax()
+        {
+            clsFinance AnFinance = new clsFinance();
+            String Error = "";
+            Int32 Take = 501;
+            string jobTake = Take.ToString();
+            Error = AnFinance.Valid(date, jobTake);
+            Assert.AreNotEqual(Error, "");
         }
 
 

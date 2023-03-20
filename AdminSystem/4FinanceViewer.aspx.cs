@@ -12,6 +12,7 @@ public partial class _1Viewer : System.Web.UI.Page
     {
         clsFinance AnFinance = new clsFinance();
         AnFinance = (clsFinance)Session["AnFinance"];
+        Response.Write(AnFinance.date);
         Response.Write(AnFinance.jobTake);
     }
 }
