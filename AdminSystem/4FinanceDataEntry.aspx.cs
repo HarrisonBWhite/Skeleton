@@ -17,11 +17,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsFinance AnFinance = new clsFinance();
 
-        //AnFinance.financeID = Convert.ToInt32(txtFinanceID.Text);
-        //AnFinance.date = Convert.ToDateTime(txtDate.Text);
-        AnFinance.jobTake = Convert.ToInt32(txtJobTake.Text);
-        Session["AnFinance"] = AnFinance;
-        Response.Redirect("4FinanceViewer.aspx");
+        string date = txtDate.Text;
+        string jobTake = txtJobTake.Text;
+
+        string Error = "";
+
+        Error = AnFinance.Valid(date, jobTake);
+
+        if (Error == "")
+        {
+            AnFinance.date = Convert.ToDateTime(date);
+            AnFinance.jobTake = Convert.ToInt32(jobTake);
+
+            Session["AnFinance"] = AnFinance;
+            Response.Write("4FinanceViewer.aspx");
+
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+            
 
     }
 

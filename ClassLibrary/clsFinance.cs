@@ -68,5 +68,45 @@ namespace ClassLibrary
             }
 
         }
+
+        public string Valid(string date, string jobTake)
+        {
+            string Error = "";
+            DateTime DateTemp;
+            Int32 Take;
+            
+
+
+            DateTemp = Convert.ToDateTime(date);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the past";
+            }
+
+            if (DateTemp > DateTime.Now.Date)
+            {
+                Error = Error = "The date cannot be in the future";
+            }
+
+            try
+            {
+                Take = Convert.ToInt32(jobTake);
+                if (Take < 0)
+                {
+                    Error = Error + "Total take cannot be lower than 0";
+                }
+
+                if (Take > 500)
+                {
+                    Error = Error + "Total take cannot exceed 500";
+                }
+            }
+            catch
+            {
+                Error = Error + "The take value is not valid";
+            }
+
+            return Error;
+        }
     }
 }
