@@ -8,6 +8,9 @@ namespace ClassLibrary
 {
     public class clsFinanceCollection
     {
+        List<clsFinance> mFinanceList = new List<clsFinance>();
+        clsFinance mThisFinance = new clsFinance();
+
         public clsFinanceCollection()
         {
             Int32 Index = 0;
@@ -28,7 +31,7 @@ namespace ClassLibrary
                 Index++;
             }
         }
-        List<clsFinance> mFinanceList = new List<clsFinance>();
+        
 
         public List<clsFinance> FinanceList
         {
@@ -55,6 +58,48 @@ namespace ClassLibrary
             }
         }
 
-        public clsFinance ThisFinance { get; set; }
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@FinanceID", mThisFinance.financeID);
+            DB.AddParameter("@date", mThisFinance.date);
+            DB.AddParameter("@jobTake", mThisFinance.jobTake);
+
+            return DB.Execute("sproc_tblFinance_Insert");
+
+        }
+
+        public clsFinance ThisFinance
+        {
+            get
+            {
+                return mThisFinance;
+            }
+            set
+            {
+                mThisFinance = value;
+            }
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@FinanceID", mThisFinance.financeID);
+            DB.AddParameter("@date", mThisFinance.date);
+            DB.AddParameter("@jobTake", mThisFinance.jobTake);
+
+            DB.Execute("sproc_tblFinance_Update");
+
+
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@FinanceID", mThisFinance.financeID);
+            DB.Execute("sproc_tblFinance_Delete");
+        }
     }
 }
