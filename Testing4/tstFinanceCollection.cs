@@ -34,16 +34,7 @@ namespace Testing4
 
         }
 
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsFinanceCollection AllFinances = new clsFinanceCollection();
-
-            Int32 SomeCount = 0;
-            AllFinances.Count = SomeCount;
-            Assert.AreEqual(AllFinances.Count, SomeCount);
-
-        }
+        
 
         [TestMethod]
         public void ThisFinancePopertyOK()
@@ -76,12 +67,7 @@ namespace Testing4
             Assert.AreEqual(AllFinances.Count, TestList.Count);
         }
 
-        [TestMethod]
-        public void TwoRecordsPreset()
-        {
-            clsFinanceCollection AllFinances = new clsFinanceCollection();
-            Assert.AreEqual(AllFinances.Count, 2);
-        }
+        
 
     }
 }

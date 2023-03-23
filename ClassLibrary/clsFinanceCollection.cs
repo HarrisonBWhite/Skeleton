@@ -10,21 +10,23 @@ namespace ClassLibrary
     {
         public clsFinanceCollection()
         {
-            clsFinance TestItem = new clsFinance();
-            TestItem.financeID = 1;
-            TestItem.date = DateTime.Now.Date;
-            TestItem.jobTake = 45;
+            Int32 Index = 0;
+            Int32 RecordCount = 0;
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblFinance_SelectAll");
+            RecordCount = DB.Count;
 
-            mFinanceList.Add(TestItem);
+            while (Index < RecordCount)
+            {
+                clsFinance AnFinance = new clsFinance();
 
-            TestItem = new clsFinance();
+                AnFinance.financeID = Convert.ToInt32(DB.DataTable.Rows[Index]["FinanceID"]);
+                AnFinance.date = Convert.ToDateTime(DB.DataTable.Rows[Index]["date"]);
+                AnFinance.jobTake = Convert.ToDouble(DB.DataTable.Rows[Index]["jobTake"]);
 
-            
-            TestItem.financeID = 2;
-            TestItem.date = DateTime.Now.Date;
-            TestItem.jobTake = 90;
-
-            mFinanceList.Add(TestItem);
+                mFinanceList.Add(AnFinance);
+                Index++;
+            }
         }
         List<clsFinance> mFinanceList = new List<clsFinance>();
 
