@@ -8,12 +8,30 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 financeID;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        financeID = Convert.ToInt32(Session["financeID"]);
+        if (IsPostBack == false)
+        {
+            if (financeID != -1)
+            {
+                DisplayFinance();
+            }
+        }
     }
 
-      protected void btnOK_Click(object sender, EventArgs e)
+    void DisplayFinance()
+    {
+        clsFinanceCollection Finance = new clsFinanceCollection();
+        Finance.ThisFinance.Find(financeID);
+
+        txtFinanceID.Text = Finance.ThisFinance.financeID.ToString();
+        txtDate.Text = Finance.ThisFinance.date.ToString();
+        txtJobTake.Text = Finance.ThisFinance.jobTake.ToString();
+    }
+
+    protected void btnOK_Click(object sender, EventArgs e)
     {
         clsFinance AnFinance = new clsFinance();
 
@@ -29,8 +47,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnFinance.date = Convert.ToDateTime(date);
             AnFinance.jobTake = Convert.ToInt32(jobTake);
 
-            Session["AnFinance"] = AnFinance;
-            Response.Write("4FinanceViewer.aspx");
+            clsFinanceCollection FinanceList = new clsFinanceCollection();
+
+            if (financeID == -1)
+            {
+                FinanceList.ThisFinance = AnFinance;
+                FinanceList.Add();
+            }
+            else
+            {
+                FinanceList.ThisFinance.Find(financeID);
+                FinanceList.ThisFinance = AnFinance;
+                FinanceList.Update();
+            }
+            Response.Redirect("4FinanceList.aspx");
 
         }
         else

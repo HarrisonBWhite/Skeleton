@@ -67,7 +67,76 @@ namespace Testing4
             Assert.AreEqual(AllFinances.Count, TestList.Count);
         }
 
-        
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsFinanceCollection AllFinances = new clsFinanceCollection();
+            clsFinance TestItem = new clsFinance();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.financeID = 2;
+            TestItem.date = DateTime.Now.Date;
+            TestItem.jobTake = 50;
+
+            AllFinances.ThisFinance = TestItem;
+
+            PrimaryKey = AllFinances.Add();
+            TestItem.financeID = PrimaryKey;
+            AllFinances.ThisFinance.Find(PrimaryKey);
+            Assert.AreEqual(AllFinances.ThisFinance, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsFinanceCollection AllFinances = new clsFinanceCollection();
+            clsFinance TestItem = new clsFinance();
+            Int32 PrimaryKey = 0;
+
+            TestItem.financeID = 1;
+            TestItem.date = DateTime.Now.Date;
+            TestItem.jobTake = 45;
+
+            AllFinances.ThisFinance = TestItem;
+            PrimaryKey = AllFinances.Add();
+            TestItem.financeID = PrimaryKey;
+
+            TestItem.financeID = 2;
+            TestItem.date = DateTime.Now.Date;
+            TestItem.jobTake = 50;
+
+            AllFinances.ThisFinance = TestItem;
+            AllFinances.Update();
+            AllFinances.ThisFinance.Find(PrimaryKey);
+            Assert.AreEqual(AllFinances.ThisFinance, TestItem);
+
+
+
+
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsFinanceCollection AllFinances = new clsFinanceCollection();
+            clsFinance TestItem = new clsFinance();
+            Int32 PrimaryKey = 0;
+
+            TestItem.financeID = 1;
+            TestItem.date = DateTime.Now.Date;
+            TestItem.jobTake = 45;
+
+            AllFinances.ThisFinance = TestItem;
+            PrimaryKey = AllFinances.Add();
+            TestItem.financeID = PrimaryKey;
+            
+            AllFinances.ThisFinance.Find(PrimaryKey);
+            AllFinances.Delete();
+            Boolean Found = AllFinances.ThisFinance.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
 
     }
 }
