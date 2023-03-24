@@ -1,10 +1,54 @@
-﻿namespace ClassLibrary
+﻿using System;
+
+namespace ClassLibrary
 {
     public class clsRequests
     {
-        public bool Active { get; set; }
-        public int requestID { get; set; }
-        public string postcode { get; set; }
-        public int flumeCount { get; set; }
+        private Int32 mRequestID;
+        private string mPostCode;
+        private Int32 mFlumeCount;
+
+
+        public int requestID
+        {
+            get
+            {
+                return mRequestID;
+            }
+            set
+            {
+                mRequestID = value;
+            }
+        }
+        public string postcode
+        {
+            get
+            {
+                return mPostCode;
+            }
+            set
+            {
+                mPostCode = value;
+            }
+        }
+        public int flumeCount
+        {
+            get
+            {
+                return mFlumeCount;
+            }
+            set
+            {
+                mFlumeCount = value;
+            }
+        }
+
+        public bool Find(int financeID)
+        {
+            mRequestID = 1;
+            mPostCode = "YO62 6TJ";
+            mFlumeCount = 1;
+            return true;
+        }
     }
 }

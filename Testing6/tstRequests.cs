@@ -14,14 +14,7 @@ namespace Testing6Requests
             Assert.IsNotNull(AnRequests);
         }
 
-        [TestMethod]
-        public void ActivePropertyOK()
-        {
-            clsRequests AnRequests = new clsRequests();
-            Boolean TestData = true;
-            AnRequests.Active = TestData;
-            Assert.AreEqual(AnRequests.Active, TestData);
-        }
+        
 
         [TestMethod]
         public void RequestIDOK()
@@ -50,6 +43,64 @@ namespace Testing6Requests
             Assert.AreEqual(AnRequests.flumeCount, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsRequests AnRequest = new clsRequests();
+            Boolean Found = false;
+            Int32 requestID = 1;
+            Found = AnRequest.Find(requestID);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestRequestIDFound()
+        {
+            clsRequests AnRequest = new clsRequests();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 requestID = 1;
+            Found = AnRequest.Find(requestID);
+
+            if (AnRequest.requestID != 1)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPostcodeFound()
+        {
+            clsRequests AnRequest = new clsRequests();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 requestID = 1;
+            Found = AnRequest.Find(requestID);
+
+            if(AnRequest.postcode != "YO62 6TJ")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestFlumeCountFound()
+        {
+            clsRequests AnRequest = new clsRequests();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 requestID = 1;
+            Found = AnRequest.Find(requestID);
+
+            if (AnRequest.flumeCount != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
 
     }
 }

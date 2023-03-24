@@ -10,6 +10,19 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:Label ID="lblRequestID" runat="server" Text="Request ID:"></asp:Label>
+        <asp:TextBox ID="txtRequestID" runat="server"></asp:TextBox>
+        <p>
+            <asp:Label ID="lblPostcode" runat="server" Text="Postcode: "></asp:Label>
+            <asp:TextBox ID="txtPostcode" runat="server"></asp:TextBox>
+        </p>
+        <asp:Label ID="lblFlumeCount" runat="server" Text="Flume Count:"></asp:Label>
+        <asp:TextBox ID="txtFlumeCount" runat="server"></asp:TextBox>
+        <p>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
+        </p>
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
     </form>
 </body>
 </html>
