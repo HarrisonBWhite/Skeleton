@@ -16,13 +16,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsRequests AnRequest = new clsRequests();
-        AnRequest.postcode = txtPostcode.Text;
-        AnRequest.requestID = Convert.ToInt32(txtRequestID.Text);
-        AnRequest.flumeCount = Convert.ToInt32(txtFlumeCount.Text);
-        Session["postcode"] = AnRequest;
-        Session["requestID"] = AnRequest;
-        Session["flumeCount"] = AnRequest;
 
-        Response.Redirect("6RequestsViewer.aspx");
+        string postcode = txtPostcode.Text;
+        string flumeCount = txtFlumeCount.Text;
+        string Error = "";
+        Error = AnRequest.Valid(postcode, flumeCount);
+
+        if (Error == "")
+        {
+            AnRequest.postcode = postcode;
+            AnRequest.flumeCount = Convert.ToInt32(flumeCount);
+            Session["AnRequest"] = AnRequest;
+            Response.Write("6RequestsViewer.aspx");
+        }
+
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 }

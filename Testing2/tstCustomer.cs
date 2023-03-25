@@ -1011,7 +1011,6 @@ namespace Testing2Customer
             Assert.AreNotEqual(Error, "");
         }
 
-
         //ContactNumber Validation
         [TestMethod]
         public void ContactNumberMinLessOne()
