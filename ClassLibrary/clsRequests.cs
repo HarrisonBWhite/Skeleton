@@ -50,5 +50,40 @@ namespace ClassLibrary
             mFlumeCount = 1;
             return true;
         }
+
+        public string Valid(string postcode, string flumeCount)
+        {
+            String Error = "";
+            Int32 Chimneys;
+
+            if (postcode.Length == 0)
+            {
+                Error = Error + "Postcode cannot be blank";
+            }
+            if (postcode.Length > 50)
+            {
+                Error = Error + "Postcode cannot be greater then 50 characters";
+            }
+
+            try
+            {
+                Chimneys = Convert.ToInt32(flumeCount);
+                if (Chimneys < 0)
+                {
+                    Error = Error + "Total chimneys cannot be lower than 0";
+                }
+
+                if (Chimneys > 500)
+                {
+                    Error = Error + "Total chimneys cannot exceed 500";
+                }
+            }
+            catch
+            {
+                Error = Error + "The chimney total is not valid";
+            }
+
+            return Error;
+        }
     }
 }
