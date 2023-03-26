@@ -51,6 +51,7 @@
     <Compile Include="clsLogin.cs" />
     <Compile Include="clsRequests.cs" />
     <Compile Include="clsCustomerCollection.cs" />
+    <Compile Include="clsRequestsCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
