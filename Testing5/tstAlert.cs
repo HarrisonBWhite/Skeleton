@@ -15,14 +15,7 @@ namespace Testing5Alert
         }
 
 
-        [TestMethod]
-        public void ActivePropertyOK()
-        {
-            clsAlert AnAlert = new clsAlert();
-            Boolean TestData = true;
-            AnAlert.Active = TestData;
-            Assert.AreEqual(AnAlert.Active, TestData);
-        }
+        
 
 
         [TestMethod]
@@ -56,11 +49,86 @@ namespace Testing5Alert
         public void ReminderIntervalOK()
         {
             clsAlert AnAlert = new clsAlert();
-            int TestData = 1;
+            DateTime TestData = DateTime.Now.Date;
             AnAlert.reminderInterval = TestData;
             Assert.AreEqual(AnAlert.reminderInterval, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsAlert AnAlert = new clsAlert();
+            Boolean Found = false;
+            Int32 alertID = 1;
+            Found = AnAlert.Find(alertID);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestAlertIDFound()
+        {
+            clsAlert AnAlert = new clsAlert();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 alertID = 1;
+            Found = AnAlert.Find(alertID);
+            if (AnAlert.alertID != 1)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+
+
+        }
+
+        [TestMethod]
+        public void TestCustomerIDFound()
+        {
+            clsAlert AnAlert = new clsAlert();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 alertID = 1;
+            Found = AnAlert.Find(alertID);
+            if (AnAlert.customerID != 1)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateFound()
+        {
+            clsAlert AnAlert = new clsAlert();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 alertID = 1;
+            Found = AnAlert.Find(alertID);
+            if (AnAlert.date != Convert.ToDateTime("10/04/2022"))
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestReminderIntervalFound()
+        {
+            clsAlert AnAlert = new clsAlert();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 alertID = 1;
+            Found = AnAlert.Find(alertID);
+            if (AnAlert.reminderInterval != Convert.ToDateTime("10/05/2022"))
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
 
     }
 }
