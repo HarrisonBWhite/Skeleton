@@ -75,5 +75,44 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string customerID, string date, string reminderInterval)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            DateTime DateTemp2;
+
+            if (customerID.Length == 0)
+            {
+                Error = Error + "Customer ID cannot be blank";
+            }
+
+            if (customerID.Length > 50)
+            {
+                Error = Error + "Customer ID cannot exceed 50 characters";
+            }
+
+            DateTemp = Convert.ToDateTime(date);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "Date cannot be in the past";
+            }
+
+            if (DateTemp > DateTime.Now.Date)
+            {
+                Error = Error + "Date cannot be in the future";
+            }
+
+            DateTemp2 = Convert.ToDateTime(reminderInterval);
+
+            if (DateTemp2 < DateTime.Now.Date)
+            {
+                Error = Error + "Interval cannot be in the past";
+            }
+
+           
+
+            return Error;
+        }
     }
 }

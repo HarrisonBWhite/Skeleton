@@ -16,9 +16,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsAlert AnAlert = new clsAlert();
-        AnAlert.customerID = Convert.ToInt32(txtCustomerID.Text);
-        Session["AnAlert"] = AnAlert;
-        Response.Redirect("5AlertViewer.aspx");
+
+        string customerID = txtCustomerID.Text;
+        string date = txtDate.Text;
+        string reminderInterval = txtReminderInterval.Text;
+        string Error = "";
+
+        Error = AnAlert.Valid(customerID, date, reminderInterval);
+
+        if (Error == "")
+        {
+            AnAlert.customerID = Convert.ToInt32(customerID);
+            AnAlert.date = Convert.ToDateTime(date);
+            AnAlert.reminderInterval = Convert.ToDateTime(reminderInterval);
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
