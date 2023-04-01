@@ -8,8 +8,28 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 alertID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        alertID = Convert.ToInt32(Session["alertID"]);
+        if (IsPostBack == false)
+        {
+            if (alertID != -1)
+            {
+                DisplayAlert();
+            }
+        }
+    }
+
+    void DisplayAlert()
+    {
+        clsAlertCollection Alerts = new clsAlertCollection();
+        Alerts.ThisAlert.Find(alertID);
+
+        txtAlertID.Text = Alerts.ThisAlert.alertID.ToString();
+        txtCustomerID.Text = Alerts.ThisAlert.customerID.ToString();
+        txtDate.Text = Alerts.ThisAlert.date.ToString();
+        txtReminderInterval.Text = Alerts.ThisAlert.reminderInterval.ToString();
 
     }
 
@@ -29,6 +49,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnAlert.customerID = Convert.ToInt32(customerID);
             AnAlert.date = Convert.ToDateTime(date);
             AnAlert.reminderInterval = Convert.ToDateTime(reminderInterval);
+
+            clsAlertCollection AlertList = new clsAlertCollection();
+            
+            if (alertID == -1)
+            {
+                AlertList.ThisAlert = AnAlert;
+                AlertList.Add();
+            }
+            else
+            {
+                AlertList.ThisAlert.Find(alertID);
+                AlertList.ThisAlert = AnAlert;
+                AlertList.Update();
+            }
+            Response.Redirect("5AlertList.aspx");
+
         }
         else
         {

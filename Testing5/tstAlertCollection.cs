@@ -70,5 +70,73 @@ namespace Testing5
 
         }
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsAlertCollection AllAlerts = new clsAlertCollection();
+            clsAlert TestItem = new clsAlert();
+            Int32 PrimaryKey = 0;
+            TestItem.alertID = 1;
+            TestItem.customerID = 1;
+            TestItem.date = DateTime.Now.Date;
+            TestItem.reminderInterval = DateTime.Now.Date;
+            AllAlerts.ThisAlert = TestItem;
+            PrimaryKey = AllAlerts.Add();
+            TestItem.alertID = PrimaryKey;
+            AllAlerts.ThisAlert.Find(PrimaryKey);
+            Assert.AreEqual(AllAlerts.ThisAlert, TestItem);
+
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsAlertCollection AllAlerts = new clsAlertCollection();
+            clsAlert TestItem = new clsAlert();
+            Int32 PrimaryKey = 0;
+
+            TestItem.customerID = 8;
+            TestItem.date = DateTime.Now.Date;
+            TestItem.reminderInterval = DateTime.Now.Date;
+
+            AllAlerts.ThisAlert = TestItem;
+            PrimaryKey = AllAlerts.Add();
+            TestItem.alertID = PrimaryKey;
+
+            TestItem.customerID = 9;
+            TestItem.date = DateTime.Now.Date;
+            TestItem.reminderInterval = DateTime.Now.Date;
+
+            AllAlerts.ThisAlert = TestItem;
+            AllAlerts.Update();
+            AllAlerts.ThisAlert.Find(PrimaryKey);
+            Assert.AreEqual(AllAlerts.ThisAlert, TestItem);
+
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsAlertCollection AllAlerts = new clsAlertCollection();
+            clsAlert TestItem = new clsAlert();
+            Int32 PrimaryKey = 0;
+
+            TestItem.alertID = 1;
+            TestItem.customerID = 1;
+            TestItem.date = DateTime.Now.Date;
+            TestItem.reminderInterval = DateTime.Now.Date;
+
+            AllAlerts.ThisAlert = TestItem;
+            PrimaryKey = AllAlerts.Add();
+            TestItem.alertID = PrimaryKey;
+            AllAlerts.ThisAlert.Find(PrimaryKey);
+            AllAlerts.Delete();
+            Boolean Found = AllAlerts.ThisAlert.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+
+       
+
+
     }
 }
