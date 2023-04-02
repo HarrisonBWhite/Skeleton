@@ -16,8 +16,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsLogin AnLogin = new clsLogin();
-        AnLogin.username = txtUsername.Text;
-        Session["AnLogin"] = AnLogin;
-        Response.Redirect("1LoginViewer.aspx");
+
+        string username = txtUsername.Text;
+        string password = txtPassword.Text;
+        string Error = "";
+
+        Error = AnLogin.Valid(username, password);
+
+        if(Error == "")
+        {
+            AnLogin.username = username;
+            AnLogin.password = password;
+
+            Session["AnLogin"] = AnLogin;
+            Response.Write("1LoginViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+
     }
 }
