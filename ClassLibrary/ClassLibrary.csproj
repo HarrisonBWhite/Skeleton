@@ -50,6 +50,7 @@
     <Compile Include="clsFinance.cs" />
     <Compile Include="clsJobCollection.cs" />
     <Compile Include="clsLogin.cs" />
+    <Compile Include="clsLoginCollection.cs" />
     <Compile Include="clsRequests.cs" />
     <Compile Include="clsCustomerCollection.cs" />
     <Compile Include="clsRequestsCollection.cs" />
