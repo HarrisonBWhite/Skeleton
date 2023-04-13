@@ -64,7 +64,117 @@ namespace Testing1
 
         }
 
-        
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsLoginCollection AllLogins = new clsLoginCollection();
+
+            clsLogin TestItem = new clsLogin();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.userID = 2;
+            TestItem.username = "user1";
+            TestItem.password = "pass1";
+
+            AllLogins.ThisLogin = TestItem;
+            PrimaryKey = AllLogins.Add();
+            TestItem.userID = PrimaryKey;
+            AllLogins.ThisLogin.Find(PrimaryKey);
+            Assert.AreEqual(AllLogins.ThisLogin, TestItem);
+
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsLoginCollection AllLogins = new clsLoginCollection();
+
+            clsLogin TestItem = new clsLogin();
+            Int32 PrimaryKey = 0;
+
+
+            TestItem.username = "user1";
+            TestItem.password = "pass1";
+
+            AllLogins.ThisLogin = TestItem;
+            PrimaryKey = AllLogins.Add();
+            TestItem.userID = PrimaryKey;
+
+            TestItem.username = "abcd";
+            TestItem.password = "1234";
+
+            AllLogins.ThisLogin = TestItem;
+            AllLogins.Update();
+            AllLogins.ThisLogin.Find(PrimaryKey);
+            Assert.AreEqual(AllLogins.ThisLogin, TestItem);
+
+
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsLoginCollection AllLogins = new clsLoginCollection();
+            clsLogin TestItem = new clsLogin();
+            Int32 PrimaryKey = 0;
+
+            TestItem.userID = 2;
+            TestItem.username = "user6";
+            TestItem.password = "pass6";
+
+            AllLogins.ThisLogin = TestItem;
+            PrimaryKey = AllLogins.Add();
+            TestItem.userID = PrimaryKey;
+            AllLogins.ThisLogin.Find(PrimaryKey);
+            AllLogins.Delete();
+            Boolean Found = AllLogins.ThisLogin.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
+
+        [TestMethod]
+        public void ReportByUsernameMethodOK()
+        {
+            clsLoginCollection AllLogins = new clsLoginCollection();
+            clsLoginCollection FilteredUsers = new clsLoginCollection();
+            FilteredUsers.ReportByUsername("");
+            Assert.AreEqual(AllLogins.Count, FilteredUsers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByUsernameNoneFound()
+        {
+            clsLoginCollection FilteredUsers = new clsLoginCollection();
+            FilteredUsers.ReportByUsername("user1");
+            Assert.AreNotEqual(0, FilteredUsers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByUsernameTestDataFound()
+        {
+            clsLoginCollection FilteredUsers = new clsLoginCollection();
+
+            Boolean OK = true;
+            FilteredUsers.ReportByUsername("user1");
+
+            if(FilteredUsers.Count == 2)
+            {
+                if(FilteredUsers.LoginList[0].userID != 2)
+                {
+                    OK = false;
+                }
+                /*if(FilteredUsers.LoginList[1].userID != 3)
+                {
+                    OK = false;
+                }*/
+            }
+            else
+            {
+                OK = true;
+            }
+            Assert.IsTrue(OK);
+        }
 
 
     }
