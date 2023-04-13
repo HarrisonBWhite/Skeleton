@@ -8,6 +8,7 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 userID;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -17,6 +18,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsLogin AnLogin = new clsLogin();
 
+        
         string username = txtUsername.Text;
         string password = txtPassword.Text;
         string Error = "";
@@ -25,11 +27,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if(Error == "")
         {
+            AnLogin.userID = userID;
             AnLogin.username = username;
             AnLogin.password = password;
 
-            Session["AnLogin"] = AnLogin;
-            Response.Write("1LoginViewer.aspx");
+            clsLoginCollection LoginList = new clsLoginCollection();
+
+            if (userID == -1)
+            {
+                LoginList.ThisLogin = AnLogin;
+                LoginList.Add();
+            }
+            else
+            {
+                LoginList.ThisLogin.Find(userID);
+                LoginList.ThisLogin = AnLogin;
+                LoginList.Add();
+            }
         }
         else
         {
