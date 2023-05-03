@@ -25,8 +25,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsRequestsCollection Request = new clsRequestsCollection();
         Request.ThisRequest.Find(requestID);
+
         txtRequestID.Text = Request.ThisRequest.requestID.ToString();
-        txtPostcode.Text = Request.ThisRequest.postcode;
+        txtPostcode.Text = Request.ThisRequest.postcode.ToString();
         txtFlumeCount.Text = Request.ThisRequest.flumeCount.ToString();
 
 
@@ -70,5 +71,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             lblError.Text = Error;
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("1LoginDtaEntry.aspx");
     }
 }

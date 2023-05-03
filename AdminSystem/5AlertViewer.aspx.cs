@@ -10,8 +10,11 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsAlert AnAlert = new clsAlert();
-        AnAlert = (clsAlert)Session["AnAlert"];
-        Response.Write(AnAlert.customerID);
+        
+    }
+
+    protected void btnRequestSweep_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("6RequestsDataEntry.aspx");
     }
 }

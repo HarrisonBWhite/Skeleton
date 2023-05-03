@@ -29,10 +29,6 @@ public partial class _1_List : System.Web.UI.Page
         lstRequestList.DataBind();
     }
 
-    protected void lstRequestList_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
@@ -66,7 +62,7 @@ public partial class _1_List : System.Web.UI.Page
         {
             requestID = Convert.ToInt32(lstRequestList.SelectedValue);
             Session["requestID"] = requestID;
-            Response.Redirect("6RequestsConfrimDelete.aspx");
+            Response.Redirect("6RequestsConfirmDelete.aspx");
         }
     }
 

@@ -72,7 +72,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    protected void btnFind_Click(object sender, EventArgs e)
+    /*protected void btnFind_Click(object sender, EventArgs e)
     {
         clsAlert AnAlert = new clsAlert();
         Int32 alertID;
@@ -86,5 +86,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtDate.Text = AnAlert.date.ToString();
             txtReminderInterval.Text = AnAlert.reminderInterval.ToString();
         }
+    }*/
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("1LoginDataEntry.aspx");
     }
 }

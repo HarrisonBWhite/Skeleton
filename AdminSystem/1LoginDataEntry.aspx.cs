@@ -25,7 +25,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         Error = AnLogin.Valid(username, password);
 
-        if(Error == "")
+        if(username == "admin1" && password == "admin1")
+        {
+            Response.Redirect("2CustomerViewer.aspx");
+        }
+
+        if (username == "sweep1" && password == "sweep1")
+        {
+            Response.Redirect("3JobViewer.aspx");
+        }
+
+        if (username == "customer1" && password == "customer1")
+        {
+            Response.Redirect("5AlertViewer.aspx");
+        }
+
+        /*if (Error == "")
         {
             AnLogin.userID = userID;
             AnLogin.username = username;
@@ -44,10 +59,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 LoginList.ThisLogin = AnLogin;
                 LoginList.Add();
             }
-        }
+        }*/
         else
         {
-            lblError.Text = Error;
+            lblError.Text = "Please enter a valid username and password!";
         }
 
     }
