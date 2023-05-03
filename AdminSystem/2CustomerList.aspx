@@ -16,7 +16,7 @@
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
             <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
         </p>
-        <asp:Label ID="lblPostcode" runat="server" Text="Enter a Post Code:"></asp:Label>
+        <asp:Label ID="lblPostcode" runat="server" Text="Enter a Surname:"></asp:Label>
         <asp:TextBox ID="txtPostcode" runat="server"></asp:TextBox>
         <p>
             <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />

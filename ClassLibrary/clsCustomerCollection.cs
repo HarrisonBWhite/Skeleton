@@ -140,6 +140,17 @@ namespace ClassLibrary
             PopulateArray(DB);
         }
 
+        public void ReportByLastName(string lastName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@lastName", lastName);
+
+            DB.Execute("sproc_tblCustomer_FilterByLastName");
+
+            PopulateArray(DB);
+        }
+
         void PopulateArray(clsDataConnection DB)
         {
             Int32 Index = 0;

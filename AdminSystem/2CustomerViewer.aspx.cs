@@ -12,22 +12,32 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsCustomer AnCustomer = new clsCustomer();
-        AnCustomer = (clsCustomer)Session["AnCustomer"];
+        
+        
+    }
 
-        
-        Response.Write(AnCustomer.firstName);
-        Response.Write(AnCustomer.lastName);
-        Response.Write(AnCustomer.houseName);
-        Response.Write(AnCustomer.street);
-        Response.Write(AnCustomer.town);
-        Response.Write(AnCustomer.county);
-        Response.Write(AnCustomer.postcode);
-        Response.Write(AnCustomer.contactNumber);
-        Response.Write(AnCustomer.email);
-        Response.Write(AnCustomer.totalChimneys);
-        Response.Write(AnCustomer.comments);
-        Response.Write(AnCustomer.totalVisits);
-        
+    protected void btnCustomerPage_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("2CustomerList.aspx");
+    }
+
+    protected void btnAlertsPage_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("5AlertList.aspx");
+    }
+
+    protected void btnRequestsPage_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("6RequestsList.aspx");
+    }
+
+    protected void btnJobPage_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("3JobList.aspx");
+    }
+
+    protected void btnFinancePage_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("4FinanceList.aspx");
     }
 }

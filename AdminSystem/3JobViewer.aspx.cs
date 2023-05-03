@@ -10,13 +10,21 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsJob AnJob = new clsJob();
-        AnJob = (clsJob)Session["AnJob"];
-        Response.Write(AnJob.lastName);
-        Response.Write(AnJob.houseName);
-        Response.Write(AnJob.comments);
-        Response.Write(AnJob.date);
-        Response.Write(AnJob.jobTake);
-        Response.Write(AnJob.totalVisits);
+    
+    }
+
+    protected void btnCustomer_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("2CustomerList.aspx");
+    }
+
+    protected void btnJobPage_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("3JobList.aspx");
+    }
+
+    protected void btnFinancePage_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("4FinanceList.aspx");
     }
 }

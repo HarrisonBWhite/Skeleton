@@ -92,7 +92,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         
     }
 
-    protected void btnFind_Click(object sender, EventArgs e)
+    /*protected void btnFind_Click(object sender, EventArgs e)
     {
         clsJob AnJob = new clsJob();
 
@@ -110,5 +110,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtJobTake.Text = AnJob.jobTake.ToString();
             txtTotalVisits.Text = AnJob.totalVisits.ToString();
         }
+    }*/
+
+    protected void btnCnacel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("1LoginDataEntry.aspx");
     }
 }

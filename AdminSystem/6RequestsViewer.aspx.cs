@@ -8,14 +8,73 @@ using ClassLibrary;
 
 public partial class _1Viewer : System.Web.UI.Page
 {
+    Int32 requestID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        requestID = Convert.ToInt32(Session["requestID"]);
+        if (IsPostBack == false)
+        {
+            if (requestID != -1)
+            {
+                DisplayRequest();
+            }
+        }
+    }
+
+    void DisplayRequest()
+    {
+        clsRequestsCollection Request = new clsRequestsCollection();
+        Request.ThisRequest.Find(requestID);
+
+        txtRequestID.Text = Request.ThisRequest.requestID.ToString();
+        txtPostcode.Text = Request.ThisRequest.postcode.ToString();
+        txtFlumeCount.Text = Request.ThisRequest.flumeCount.ToString();
+
+
+    }
+
+    protected void btnOK_Click(object sender, EventArgs e)
+    {
         clsRequests AnRequest = new clsRequests();
-        AnRequest = (clsRequests)Session["postcode"];
-        AnRequest = (clsRequests)Session["requestID"];
-        AnRequest = (clsRequests)Session["flumeCount"];
-        Response.Write(AnRequest.postcode);
-        Response.Write(AnRequest.requestID);
-        Response.Write(AnRequest.flumeCount);
+
+        string postcode = txtPostcode.Text;
+        string flumeCount = txtFlumeCount.Text;
+        string Error = "";
+        Error = AnRequest.Valid(postcode, flumeCount);
+
+        if (Error == "")
+        {
+            AnRequest.requestID = requestID;
+            AnRequest.postcode = postcode;
+            AnRequest.flumeCount = Convert.ToInt32(flumeCount);
+
+
+            clsRequestsCollection RequestList = new clsRequestsCollection();
+            
+            if(requestID == -1)
+            {
+                RequestList.ThisRequest = AnRequest;
+                RequestList.Add();
+
+            }
+            else
+            {
+                RequestList.ThisRequest.Find(requestID);
+                RequestList.ThisRequest = AnRequest;
+                RequestList.Update();
+            }
+
+            Response.Redirect("6RequestsList.aspx");
+        }
+
+        else
+        {
+            lblError.Text = Error;
+        }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("1LoginDtaEntry.aspx");
     }
 }

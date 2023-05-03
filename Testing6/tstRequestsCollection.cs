@@ -76,7 +76,7 @@ namespace Testing6
 
             Int32 PrimaryKey = 0;
 
-            TestItem.requestID = 1;
+            TestItem.requestID = 4;
             TestItem.postcode = "YO62 6TJ";
             TestItem.flumeCount = 1;
 

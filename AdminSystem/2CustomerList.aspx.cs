@@ -29,7 +29,7 @@ public partial class _1_List : System.Web.UI.Page
         clsCustomerCollection Customers = new clsCustomerCollection();
         lstCustomerList.DataSource = Customers.CustomerList;
         lstCustomerList.DataValueField = "customerID";
-        lstCustomerList.DataTextField = "postcode";
+        lstCustomerList.DataTextField = "lastName";
         lstCustomerList.DataBind();
     }
 
@@ -78,10 +78,10 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnApply_Click(object sender, EventArgs e)
     {
         clsCustomerCollection Customers = new clsCustomerCollection();
-        Customers.ReportByPostCode(txtPostcode.Text);
+        Customers.ReportByLastName(txtPostcode.Text);
         lstCustomerList.DataSource = Customers.CustomerList;
         lstCustomerList.DataValueField = "customerID";
-        lstCustomerList.DataTextField = "postcode";
+        lstCustomerList.DataTextField = "lastName";
         lstCustomerList.DataBind();
     }
 
@@ -90,12 +90,12 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnClear_Click(object sender, EventArgs e)
     {
         clsCustomerCollection Customers = new clsCustomerCollection();
-        Customers.ReportByPostCode("");
+        Customers.ReportByLastName("");
 
         txtPostcode.Text = "";
         lstCustomerList.DataSource = Customers.CustomerList;
         lstCustomerList.DataValueField = "customerID";
-        lstCustomerList.DataTextField = "postcode";
+        lstCustomerList.DataTextField = "lastName";
         lstCustomerList.DataBind();
 
     }

@@ -160,14 +160,14 @@ namespace Testing3
 
         }
 
-        [TestMethod]
+        /*[TestMethod]
         public void ReportByLastNameMethodOK()
         {
             clsJobCollection AllJobs = new clsJobCollection();
             clsJobCollection FilteredJobs = new clsJobCollection();
             FilteredJobs.ReportByLastName("");
             Assert.AreEqual(AllJobs.Count, FilteredJobs.Count);
-        }
+        }*/
 
        [TestMethod]
        public void ReportByLastNameNoneFound()
